@@ -13,18 +13,8 @@ struct MemoryGame<CardContent> {
     // Mutating signifies that this function updates the model
     mutating func choose(card : Card){
         print("Card that is chosen is \(card)")
-        let chosenIndex: Int = index(of: card)
+        let chosenIndex: Int = cards.firstMatchingIndex(of: card)
         cards[chosenIndex].isFaceUp = !cards[chosenIndex].isFaceUp
-    }
-    
-    func index(of card: Card) -> Int {
-        for index in 0..<cards.count {
-            if cards[index].id == card.id {
-                return index
-            }
-        }
-        
-        return 0 // TODO: Need to return something that signifies card cannot be found.
     }
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
