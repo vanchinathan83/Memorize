@@ -13,7 +13,7 @@ struct MemoryGame<CardContent> {
     // Mutating signifies that this function updates the model
     mutating func choose(card : Card){
         print("Card that is chosen is \(card)")
-        let chosenIndex: Int = cards.firstMatchingIndex(of: card)
+        let chosenIndex: Int = cards.firstIndex(matching: card)
         cards[chosenIndex].isFaceUp = !cards[chosenIndex].isFaceUp
     }
     
