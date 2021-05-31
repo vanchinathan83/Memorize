@@ -30,7 +30,8 @@ struct Grid<Item, ItemView> : View where Item: Identifiable, ItemView: View {
     }
     
     func view(for item: Item, in layout: GridLayout) -> some View {
-        let index = items.firstIndex(matching: item)
+        // Force unwrap the optional
+        let index = items.firstIndex(matching: item)!
         return viewForItem(item)
             .frame(width: layout.itemSize.width, height: layout.itemSize.height)
             .position(layout.location(ofItemAt: index))
